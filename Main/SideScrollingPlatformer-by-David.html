@@ -1,10 +1,21 @@
 <style>
+
+  body {
+    background-color: #000000;
+    color: #ffffff;
+    margin-top: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+  }
     #bg {
         background-image: url("mainMenuBg.png");
         background-repeat: repeat-x;
         background-size: 100% 100%;
         animation: bgScrollLeft 15s linear infinite;
-        margin:0px 0px 0px 0px;
+        overflow: hidden;
+        margin-top: 0;
+        margin-left: 0;
     }
 
 
@@ -16,18 +27,30 @@
 
 
     
-    @keyframes bgScrollLeft {
-  from {
-    background-position: 0 0;
+  @keyframes bgScrollLeft {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: var(--scrollWidth) 0;
+    }
   }
-  to {
-    background-position: var(--scrollWidth) 0;
-  }
-}
 
   .background {
     height: var(--backgroundHeight);
     width: var(--backgroundWidth);
+    overflow: hidden;
+    margin-top: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .mainMenu {
+    width: 500px;
+    height: 800px;
+    margin: auto;
+    background-color:aquamarine
+    border: 5px solid black;
   }
 </style>
 
@@ -36,7 +59,7 @@
   function backgroundFun() {
     var w = window.innerWidth;
     var h = window.innerHeight;
-    var fw = parseInt(w) * 2;
+    var fw = parseInt(w) * -2;
     document.documentElement.style
       .setProperty('--scrollWidth', fw + "px");
     
@@ -52,6 +75,11 @@
 </script>
 
 <body onload="{backgroundFun()}">
-<div id="bg" class="background"></div>
+  <div id="bg" class="background">
+
+    
+
+
+  </div>
 
 </body>
