@@ -1,25 +1,57 @@
 <style>
     #bg {
-        background-image: url("https://thumbs.dreamstime.com/b/bright-color-pixel-background-gradient-transition-animtion-colorful-background-squares-seamless-gradient-transition-175316098.jpg");
+        background-image: url("mainMenuBg.png");
         background-repeat: repeat-x;
-        background-size: 200% 100%;
-        animation: bgScrollLeft 5s linear infinite;
+        background-size: 100% 100%;
+        animation: bgScrollLeft 15s linear infinite;
+        margin:0px 0px 0px 0px;
     }
 
+
+    root{
+      --scrollWidth: 100px;
+      --backgroundHeight: 100px;
+      --backgroundWidth: 100px;
+    }
+
+
+    
     @keyframes bgScrollLeft {
   from {
     background-position: 0 0;
   }
   to {
-    background-position: -1000px 0;
+    background-position: var(--scrollWidth) 0;
   }
 }
+
+  .background {
+    height: var(--backgroundHeight);
+    width: var(--backgroundWidth);
+  }
 </style>
 
 <script>
 
+  function backgroundFun() {
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var fw = parseInt(w) * 2;
+    document.documentElement.style
+      .setProperty('--scrollWidth', fw + "px");
+    
+    
+    document.documentElement.style
+    .setProperty('--backgroundWidth', w + 'px')
+    document.documentElement.style
+    .setProperty('--backgroundHeight', h + 'px');
+    
+  }
+  
+
 </script>
 
-<body>
-<div style="width: 500px; height: 500px;" id="bg"></div>
+<body onload="{backgroundFun()}">
+<div id="bg" class="background"></div>
+
 </body>
