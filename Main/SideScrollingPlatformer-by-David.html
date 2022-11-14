@@ -12,17 +12,41 @@
         background-image: url("mainMenuBg.png");
         background-repeat: repeat-x;
         background-size: 100% 100%;
-        animation: bgScrollLeft 15s linear infinite;
+        animation: bgScrollLeft 20s linear infinite;
         overflow: hidden;
         margin-top: 0;
         margin-left: 0;
+        position: relative;
     }
+
+
 
 
     root{
       --scrollWidth: 100px;
       --backgroundHeight: 100px;
       --backgroundWidth: 100px;
+      --platformwidth: 1px;
+      --platformheight: 1px;
+      --groundh:1px;
+      --groundw:1px;
+    }
+
+    .platform {
+      width: var(--platformwidth);
+      height: var(--platformheight);
+      
+    }
+
+    .ground {
+      background-image: url("ground_platform_dirt.png");
+      width: var(--groundw);
+      height: var(--groundh);
+      animation: bgScrollLeft 15s linear infinite;
+      background-repeat: repeat-x;
+      position: absolute;
+      bottom: 0;
+      
     }
 
 
@@ -45,12 +69,7 @@
     margin-bottom: 0;
   }
 
-  .mainMenu {
-    width: 500px;
-    height: 800px;
-    margin: auto;
-    background-color:aquamarine;
-  }
+  
 </style>
 
 <script>
@@ -59,6 +78,8 @@
     var w = window.innerWidth;
     var h = window.innerHeight;
     var fw = parseInt(w) * -2;
+    var gh = parseFloat(h) * 0.1;
+    console.log(gh);
     document.documentElement.style
       .setProperty('--scrollWidth', fw + "px");
     
@@ -67,6 +88,12 @@
     .setProperty('--backgroundWidth', w + 'px')
     document.documentElement.style
     .setProperty('--backgroundHeight', h + 'px');
+
+    document.documentElement.style
+    .setProperty('--groundw', w + 'px')
+
+    document.documentElement.style
+    .setProperty('--groundh', gh + 'px')
     
   }
   
@@ -75,6 +102,7 @@
 
 <body onload="{backgroundFun()}">
   <div id="bg" class="background">
+    <div class="ground"></div>
 
     
 
