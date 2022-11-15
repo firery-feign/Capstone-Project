@@ -46,6 +46,7 @@
       background-repeat: repeat-x;
       position: absolute;
       bottom: 0;
+      z-index: 999999;
       
     }
 
@@ -67,6 +68,9 @@
     margin-top: 0;
     margin-left: 0;
     margin-bottom: 0;
+    z-index:1;
+    background-size: 100%;
+    position: absolute;
   }
 
   
@@ -101,12 +105,9 @@
 </script>
 
 <body onload="{backgroundFun()}">
-  <div id="bg" class="background">
-    <div class="ground"></div>
+  <canvas id="bg" class="background"></canvas>
 
-    
-
-
-  </div>
+  <div class="ground"></div>
+  
 
 </body>
