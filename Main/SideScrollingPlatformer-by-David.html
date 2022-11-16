@@ -1,7 +1,7 @@
 <style>
 
   body {
-    background-color: #000000;
+    background-color: lightcyan;
     color: #ffffff;
     margin-top: 0;
     margin-left: 0;
@@ -9,6 +9,7 @@
     overflow: hidden;
   }
     #bg {
+
         background-image: url("mainMenuBg.png");
         background-repeat: repeat-x;
         background-size: 100% 100%;
@@ -30,6 +31,7 @@
       --platformheight: 1px;
       --groundh:1px;
       --groundw:1px;
+      --groundAnimation: 'running';
     }
 
     .platform {
@@ -46,7 +48,9 @@
       background-repeat: repeat-x;
       position: absolute;
       bottom: 0;
-      z-index: 999999;
+      z-index: 12;
+      background-size: 100%;
+      animation-play-state: var(--groundAnimation);
       
     }
 
@@ -65,12 +69,22 @@
     height: var(--backgroundHeight);
     width: var(--backgroundWidth);
     overflow: hidden;
-    margin-top: 0;
-    margin-left: 0;
-    margin-bottom: 0;
+    align-self: center;
+    margin: auto;
     z-index:1;
-    background-size: 100%;
     position: absolute;
+  }
+
+  .myMenuBackground {
+    background-color: lightcyan;
+    height: 800px;
+    width: 600px;
+    margin: auto;
+    align-self: center;
+    position: relative;
+    border: 5px solid lightgreen;
+    border-radius: 8px;
+    z-index: 20;
   }
 
   
@@ -79,8 +93,8 @@
 <script>
 
   function backgroundFun() {
-    var w = window.innerWidth;
-    var h = window.innerHeight;
+    var w = 800;
+    var h = 800;
     var fw = parseInt(w) * -2;
     var gh = parseFloat(h) * 0.15;
     console.log(gh);
@@ -100,14 +114,24 @@
     .setProperty('--groundh', gh + 'px')
     
   }
+
+  function myAnimationPause() {
+    document.getElementById('bg').style.animationPlayState = "paused";
+    document.documentElement.style
+    .setProperty('--groundAnimation', "paused");
+  }
   
+ 
 
 </script>
 
-<body onload="{backgroundFun()}">
-  <canvas id="bg" class="background"></canvas>
-
-  <div class="ground"></div>
+<body onload="{backgroundFun(); myAnimationPause()}">
   
+  
+    <canvas id="bg" class="background"></canvas>
+
+    <div class="ground"></div>
+
+    
 
 </body>
